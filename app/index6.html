@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<!-- the view or "page"; select it as the "home" screen -->
+<div id="settings" dojoType="dojox.mobile.View" selected="true">
+
+	<h1 dojoType="dojox.mobile.Heading">Blasting Agent</h1>
+
+	<ul dojoType="dojox.mobile.RoundRectList">
+
+		<li dojoType="dojox.mobile.ListItem" icon="images/icon-3.png" rightText="Slow"
+			moveTo="screens">
+			Display Screens
+			<div class="mblItemSwitch" dojoType="dojox.mobile.Switch"></div>
+		</li>
+
+		<li dojoType="dojox.mobile.ListItem" icon="images/icon-3.png" rightText=""
+			moveTo="camera">
+			Take Pictures
+		</li>
+	</ul>
+</div>
+
+<!-- The "General" sub-page -->
+<div id="camera" dojoType="dojox.mobile.View">
+	<h1 dojoType="dojox.mobile.Heading" back="Settings" moveTo="settings">Back</h1>
+
+	<ul dojoType="dojox.mobile.RoundRectList">
+		<li dojoType="dojox.mobile.ListItem" icon="images/icon-3.png" rightText="">
+		</li>
+	</ul>
+</div>
+<div id="screens" dojoType="dojox.mobile.View">
+
+</div>
+
+</body>
+</html>

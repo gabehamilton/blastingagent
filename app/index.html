@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blasting Agent</title>
+	<meta name="viewport"
+		  content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+
+	<!-- remove no-cache in prod -->
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+
+	<!--<link href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojox/mobile/themes/android/android.css" rel="stylesheet"/>-->
+	<script data-dojo-config="async:true"
+			src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js">
+	</script>
+	<script>
+		require(["dojox/mobile/parser", "dojox/mobile/deviceTheme", "dojox/mobile", "dojox/mobile/ScrollableView",
+			"dojox/mobile/TabBar","dojox/mobile/TabBarButton", "dojox/mobile/compat"],
+			function(parser) {
+				parser.parse();
+			}
+		);
+	</script>
+	<style>
+		/* vertically center the image */
+		.refresh img   {
+			margin-top:6px;
+		}
+		div.actionButton {float:right;}
+		#screens {background-color: red}
+		#tabBar{margin-top:-49px;}
+	</style>
+</head>
+<body>
+<!-- the view or "page"; select it as the "home" screen -->
+<div id="home" data-dojo-type="dojox.mobile.ScrollableView" data-dojo-props="selected: true">
+	<h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">Blasting Agent</h1>
+
+	<ul data-dojo-type="dojox.mobile.RoundRectList">
+
+		<li data-dojo-type="dojox.mobile.ListItem" icon="images/video-display.png" rightText="Slow"
+			moveTo="screens">
+			Display Pictures
+			<div class="mblItemSwitch" data-dojo-type="dojox.mobile.Switch"></div>
+		</li>
+
+		<li data-dojo-type="dojox.mobile.ListItem" icon="images/camera-photo.png" rightText=""
+			moveTo="camera">
+			Take Pictures
+			<!--<button data-dojo-type="dojox.mobile.Button"-->
+					<!--data-dojo-props='label:"Click me!", onClick:function(e){ alert("button clicked");return true; }'></button>
+					-->
+		</li>
+	</ul>
+</div>
+
+<!-- The "General" sub-page -->
+<div id="camera" data-dojo-type="dojox.mobile.ScrollableView">
+	<h1 data-dojo-type="dojox.mobile.Heading" back="Home" moveTo="home">Back</h1>
+
+	<ul data-dojo-type="dojox.mobile.RoundRectList">
+		<li data-dojo-type="dojox.mobile.ListItem" icon="images/camera-photo.png" rightText="">
+			<div data-dojo-type="dojox.mobile.ToolBarButton"
+				 data-dojo-props="icon: 'images/camera-photo.png'" class="actionButton refresh"></div>
+		</li>
+	</ul>
+</div>
+<div id="screens" data-dojo-type="dojox.mobile.ScrollableView">
+	<h1 data-dojo-type="dojox.mobile.Heading" back="Home" moveTo="home">Back</h1>
+</div>
+
+<ul id="tabBar" data-dojo-type="dojox.mobile.TabBar" data-dojo-props="iconBase: 'images/iconStrip.png'">
+	<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="iconPos1: '0,0,29,30', iconPos2: '29,0,29,30', selected: true, moveTo: 'screens'">Take Pictures</li>
+	<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="iconPos1: '0,29,29,30', iconPos2: '29,29,29,30', moveTo: 'screens'">Screens</li>
+</ul>
+</body>
+</html>
