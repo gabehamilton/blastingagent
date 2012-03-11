@@ -22,6 +22,30 @@
 			}
 		);
 	</script>
+	<script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+
+	<script>
+		function PictureSourceType() {};
+		PictureSourceType.PHOTO_LIBRARY = 0;
+		PictureSourceType.CAMERA = 1;
+
+		function getPicture(sourceType)
+		{
+		     var options = { quality: 10 };
+		     if (sourceType != undefined) {
+		          options["sourceType"] = sourceType;
+		     }
+		     // if no sourceType specified, the default is CAMERA
+		     navigator.camera.getPicture(getPicture_Success, null, options);
+		};
+
+		function getPicture_Success(imageData)
+		{
+		         alert("getpic success");
+		        document.getElementById("test_img").src = "data:image/jpeg;base64," + imageData;
+		}
+
+	</script>
 	<style>
 		/* vertically center the image */
 		.refresh img   {
@@ -63,11 +87,14 @@
 		<li data-dojo-type="dojox.mobile.ListItem" icon="images/camera-photo.png" rightText="">
 			<div data-dojo-type="dojox.mobile.ToolBarButton"
 				 data-dojo-props="icon: 'images/camera-photo.png'" class="actionButton refresh"></div>
+			<button onclick="getPicture()">From Camera</button>
+			<button onclick="getPicture(PictureSourceType.PHOTO_LIBRARY)">From Photo Library</button>
 		</li>
 	</ul>
 </div>
 <div id="screens" data-dojo-type="dojox.mobile.ScrollableView">
 	<h1 data-dojo-type="dojox.mobile.Heading" back="Home" moveTo="home">Back</h1>
+	<img style="width:60px;height:60px" id="test_img" src="" />
 </div>
 
 <ul id="tabBar" data-dojo-type="dojox.mobile.TabBar" data-dojo-props="iconBase: 'images/iconStrip.png'">
